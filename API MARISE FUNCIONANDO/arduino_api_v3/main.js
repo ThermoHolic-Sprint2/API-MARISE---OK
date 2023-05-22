@@ -17,8 +17,8 @@ const serial = async (
         {
             host: 'localhost',
             port: 3306,
-            user: 'root',
-            password: 'gyulia06*',
+            user: 'aluno',
+            password: 'sptech',
             database: 'ThermoHolic'
         }
     ).promise();
@@ -53,8 +53,20 @@ const serial = async (
 
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                'INSERT INTO leitura (TemperaturaTanque) VALUES (?)',
-                [lm35Temperatura]
+                'INSERT INTO leitura (TemperaturaTanque,fkSensorL) VALUES (?,?)',
+                [lm35Temperatura-14,1]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO leitura (TemperaturaTanque,fkSensorL) VALUES (?,?)',
+                [lm35Temperatura,2]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO leitura (TemperaturaTanque,fkSensorL) VALUES (?,?)',
+                [lm35Temperatura-10,3]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO leitura (TemperaturaTanque,fkSensorL) VALUES (?,?)',
+                [lm35Temperatura-5,4]
             );
         }
 
